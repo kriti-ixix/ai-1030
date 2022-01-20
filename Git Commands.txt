@@ -1,0 +1,9 @@
+Git Commands:
+
+git init: Creates a new local git repo
+
+git add <filename>: Adds a new file to git
+
+git commit -m "message": Commits a new change to the repo
+
+git push <additional info>: Saves the changes to remote repo
