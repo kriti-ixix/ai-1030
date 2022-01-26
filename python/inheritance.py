@@ -9,7 +9,8 @@ class Student: # Parent/Base class
 
 class Exams(Student): # Child/Derived class
     def __init__(self, n, rn, s, m):
-        Student.__init__(self, n, rn)
+        # Student.__init__(self, n, rn)
+        super().__init__(self, n, rn)
         self.subject = s
         self.marks = m
 
