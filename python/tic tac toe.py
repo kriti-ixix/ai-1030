@@ -1,5 +1,5 @@
 # Importing the Libraries
-import random
+import random as r
 
 # Global Variables
 board = {'1':' ', '2':' ', '3':' ', '4':' ', '5':' ', '6':' ', '7':' ', '8':' ', '9':' '}
@@ -26,7 +26,12 @@ def play_game():
             print("Game over")
             break
 
-        choice = input(f"Make your move {turn}: ")
+        if turn == 'X':
+            choice = input(f"Make your move {turn}: ")
+        else:
+            possible_choices = [square for square in board if board[square]==" "]
+            choice = r.choice(possible_choices)
+            print(f"Computer's choice: {choice}")
 
         if board[choice] == " ":
             board[choice] = turn
