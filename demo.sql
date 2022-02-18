@@ -1,4 +1,4 @@
--- show all the databases
+-- show all thedatabases
 show databases;
 
 -- create a database
