@@ -3,7 +3,7 @@ import webbrowser
 import dash
 from dash import html
 from dash.dependencies import Input, Output
-import dash_core_components as dcc
+from dash import dcc
 
 import pandas as pd
 import plotly.express as px
