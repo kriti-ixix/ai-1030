@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 
 # Global variables
 app = dash.Dash()
-
+df = px.data.tips()
 
 # Functions
 def open_browser():
@@ -20,17 +20,14 @@ def open_browser():
 
 
 def create_app_ui():
+    days = df['day'].unique()
+    print(days)
+
     main_layout = html.Div(
         [
-            html.H1(id="main_title", children="My Project"),
-
-            html.Button(id="button", children="Click me", n_clicks=0),
-
-            html.Hr(),
-
             dcc.Dropdown(id="dropdown", 
-            options = [ {'label': 'Bar Graph', 'value':'bar'}, {'label':'Line Graph', 'value':'line'} ],
-            value = 'line'),
+            options = [{'label':x, 'value':x} for x in days],
+            value = 'Thur'),
 
             dcc.Graph(id="graph", figure=go.Figure())
         ]
@@ -39,31 +36,16 @@ def create_app_ui():
 
 
 @app.callback(
-    Output("main_title", "children"),
-    [
-        Input("button", "n_clicks")
-    ]
-)
-def change_text(n_clicks):
-    return f"Button clicked {n_clicks} times"
-
-
-@app.callback(
     Output("graph", "figure"),
     [
         Input("dropdown", "value")
     ]
 )
-def update_graph(value):
-    data = [["ABC", 10], ["XYZ", 15], ["PQR", 25], ["JKL", 50]]
-    df = pd.DataFrame(data, columns=['Name', 'Age'])
-    figure = None
+def get_graph(day):
+    display_df = df[df['day'] == day]
+    figure = px.bar(display_df, x = 'sex', y = 'total_bill', color='smoker')
 
-    if value == 'line':
-        figure = px.line(df, x = 'Name', y='Age')
-    else:
-        figure = px.bar(df, x = 'Name', y = 'Age')
-
+    # figure = px.scatter(df, x='total_bill', y='tip', color='sex')
     return figure
 
 
