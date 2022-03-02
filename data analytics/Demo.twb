@@ -1089,8 +1089,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1200' minheight='1200' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98020' id='25' param='vert' type-v2='layout-flow' w='98700' x='650' y='990'>
+            <zone h='100000' id='28' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98020' id='27' param='vert' type-v2='layout-flow' w='98700' x='650' y='990'>
                 <zone fixed-size='280' h='49010' id='3' is-fixed='true' name='Category Sales' w='49350' x='650' y='990'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
