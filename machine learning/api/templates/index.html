@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Diabetes Prediction Model</title>
+    </head>
+
+    <body>
+        <h3>Enter some details to get a diabetes diagnosis</h3>
+        <br><br>
+
+        <form action="/prediction" method="post">
+            Glucose: <input name="glucose" type="number" placeholder="Enter your glucose level">
+            <br><br>
+            BMI: <input name="bmi" type="number" placeholder="Enter your BMI">
+            <br><br>
+            Age: <input name="age" type="number" placeholder="Enter your age">
+            <br><br>
+            <input type="submit">
+        </form>
+
+        <b>Prediction: </b> {{output_prediction}}
+        <br>
+        <b>Probability: </b> {{output_proba}}
+
+    </body>
+
+</html>
