@@ -4,23 +4,22 @@
     </head>
 
     <body>
-        <h3>Enter some details to get a diabetes diagnosis</h3>
+        <h3>Enter the information to get a diabetes diagnosis</h3>
         <br><br>
-
+        
         <form action="/prediction" method="post">
-            Glucose: <input name="glucose" type="number" placeholder="Enter your glucose level">
+            Glucose: <input name="glucose" type="number" placeholder="Enter glucose level">
             <br><br>
-            BMI: <input name="bmi" type="number" placeholder="Enter your BMI">
+            BMI: <input name="bmi" type="number" placeholder="Enter BMI">
             <br><br>
-            Age: <input name="age" type="number" placeholder="Enter your age">
+            Age: <input name="age" type="number" placeholder="Enter age">
             <br><br>
             <input type="submit">
         </form>
 
-        <b>Prediction: </b> {{output_prediction}}
-        <br>
-        <b>Probability: </b> {{output_proba}}
+        <br><br>
+        Prediction: {{output_prediction}} <br>
+        Probability: {{output_proba}} <br>
 
     </body>
-
 </html>
