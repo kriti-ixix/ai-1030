@@ -42,12 +42,23 @@ class HandDetector:
     def fingers_up(self):
         fingers = []
         
-        # Thumb
-        
-        
-        # Four fingers
-    
-    
+        if len(self.lmList) > 0:
+            # Thumb
+            if self.lmList[self.tipsIds[0]][1] > self.lmList[self.tipsIds[0] - 1][1]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+                
+            # Fingers
+            for id in range(1, 5):
+                if self.lmList[self.tipsIds[id]][2] < self.lmList[self.tipsIds[id] - 2][2]:
+                    fingers.append(1)
+                else:
+                    fingers.append(0)
+                
+        print(fingers)
+        return sum(fingers)
+
 cap = cv2.VideoCapture(0)
 detector = HandDetector()
 
@@ -55,8 +66,10 @@ while True:
     _, frame = cap.read()
     image = detector.find_hands(frame)
     lmList = detector.find_position(image)
-    print(lmList)
+    fingersUp = detector.fingers_up()
+    
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    cv2.putText(image, str(fingersUp), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
     
     cv2.imshow("Hands", image)
     
